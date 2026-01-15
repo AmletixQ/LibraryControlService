@@ -33,6 +33,8 @@ namespace LibraryControlService
             return null;
         }
 
+
+        // Переработать!
         public static void UpdateBook(Book updatedBook)
         {
             for (int i = 0; i < books.Count; ++i)
@@ -47,8 +49,8 @@ namespace LibraryControlService
             if (File.Exists(filepath))
             {
                 var json = File.ReadAllText(filepath);
-                // Исправлено: используем System.Text.Json для десериализации
                 var loadedBooks = JsonSerializer.Deserialize<List<Book>>(json);
+
                 if (loadedBooks != null)
                 {
                     books.Clear();
