@@ -53,25 +53,7 @@ namespace LibraryControlService
             SelectAuthor= AuthorTextBox.Text;
             SelectTitle= NameTextBox.Text;
             SelectYear= YearTextBox.Text;
-            ListView listView= new ListView();
-            var l = listView.SelectedItems[0];
-            
-
-            /*// Собираем данные для фильтрации
-            var filterData = new FilterData
-            {
-                Author = AuthorTextBox.Text.Trim(),
-                Title = NamуTextBox.Text.Trim(),
-                Year = YearTextBox.Text.Trim(),
-                
-            };*/
-
-            /*// Получаем выбранные жанры
-            */
-
-            /*// Создаем и показываем форму с результатами
-            var resultsForm = new ResultsForm(filterData);
-            resultsForm.Show();*/
+            SelectGenre = listViewGenres.SelectedItems[0].ToString();
         }
 
         private void listViewGenres_SelectedIndexChanged(object sender, EventArgs e)
