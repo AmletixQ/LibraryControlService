@@ -6,7 +6,6 @@ namespace LibraryControlService
     public enum Genre
     {
         Fiction,
-        NonFiction,
         Science,
         History,
         Biography,
@@ -14,7 +13,8 @@ namespace LibraryControlService
         Mystery,
         Romance,
         Thriller,
-        Horror
+        Horror,
+        Detective
     }
 
     public class Book
