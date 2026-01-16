@@ -4,16 +4,18 @@ namespace LibraryControlService
 {
     public partial class MainForm : Form
     {
+        LibraryService globalLibrary;
+        LibraryService basketLibrary;
+
         public MainForm()
         {
             InitializeComponent();
+            globalLibrary = new LibraryService();
+            basketLibrary = new LibraryService();
 
-            LibraryService.Initialize();
+            globalLibrary.Initialize();
 
-            foreach (var book in LibraryService.GetBooks())
-            {
-                AddBookCard(book);
-            }
+            ShowBooks(globalLibrary.GetBooks());
         }
 
         private void AddBookCard(Book book)
@@ -23,7 +25,7 @@ namespace LibraryControlService
                 Width = 200,
                 Height = 260,
                 BorderStyle = BorderStyle.FixedSingle,
-                Margin = new Padding(10)
+                Margin = new Padding(5)
             };
 
             PictureBox pictureBox = new PictureBox()
@@ -68,7 +70,7 @@ namespace LibraryControlService
                 ForeColor = Color.Red,
                 AutoSize = false
             };
-            
+
 
             Button btnBuy = new Button()
             {
@@ -100,6 +102,20 @@ namespace LibraryControlService
             card.Controls.Add(btnCart);
 
             BooksPanel.Controls.Add(card);
+        }
+
+        private void ShowBooks(List<Book> books)
+        {
+            foreach (var book in books)
+            {
+                AddBookCard(book);
+            }
+        }
+
+        private void SearchButton_Click(object sender, EventArgs e)
+        {
+            SearchForm searchForm = new SearchForm();
+            searchForm.ShowDialog();
         }
     }
 }

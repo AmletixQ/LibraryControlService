@@ -6,25 +6,25 @@ namespace LibraryControlService
 {
     class LibraryService
     {
-        static private readonly List<Book> books = [];
+        private readonly List<Book> books = [];
 
-        public static List<Book> GetBooks()
+        public List<Book> GetBooks()
         {
             return new List<Book>(books);
         }
 
-        public static void Initialize() => LoadFromFile();
-        public static void Clear() => books.Clear();
-        public static void AddBook(Book book) => books.Add(book);
+        public void Initialize() => LoadFromFile();
+        public void Clear() => books.Clear();
+        public void AddBook(Book book) => books.Add(book);
 
-        public static void RemoveBook(Guid bookId)
+        public void RemoveBook(Guid bookId)
         {
             foreach (var book in books)
                 if (book.Id == bookId)
                     books.Remove(book);
         }
 
-        public static Book? GetBookById(Guid bookId)
+        public Book? GetBookById(Guid bookId)
         {
             foreach (var book in books)
                 if (book.Id == bookId)
@@ -33,14 +33,14 @@ namespace LibraryControlService
             return null;
         }
 
-        public static void UpdateBook(Book updatedBook)
+        public void UpdateBook(Book updatedBook)
         {
             for (int i = 0; i < books.Count; ++i)
                 if (books[i].Id == updatedBook.Id)
                     books[i] = updatedBook;
         }
 
-        private static void LoadFromFile()
+        private void LoadFromFile()
         {
             const string filepath = "assets/books.txt";
 
