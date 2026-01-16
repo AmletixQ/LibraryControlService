@@ -4,7 +4,7 @@ using System.Text.Json;
 
 namespace LibraryControlService
 {
-    static class LibraryService
+    class LibraryService
     {
         static private readonly List<Book> books = [];
 
