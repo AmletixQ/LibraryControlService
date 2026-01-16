@@ -12,6 +12,10 @@ namespace LibraryControlService
 {
     public partial class SearchForm : Form
     {
+        public string SelectAuthor {  get; set; }
+        public string SelectTitle { get; set; }
+        public string SelectGenre {  get; set; }
+        public string SelectYear {  get; set; }
         public SearchForm()
         {
             InitializeComponent();
@@ -46,23 +50,24 @@ namespace LibraryControlService
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
+            SelectAuthor= AuthorTextBox.Text;
+            SelectTitle= NameTextBox.Text;
+            SelectYear= YearTextBox.Text;
+            ListView listView= new ListView();
+            var l = listView.SelectedItems[0];
+            
+
             /*// Собираем данные для фильтрации
             var filterData = new FilterData
             {
                 Author = AuthorTextBox.Text.Trim(),
                 Title = NamуTextBox.Text.Trim(),
                 Year = YearTextBox.Text.Trim(),
-                SelectedGenres = new List<string>()
+                
             };*/
 
             /*// Получаем выбранные жанры
-            foreach (ListViewItem item in listViewGenres.Items)
-            {
-                if (item.Checked)
-                {
-                    filterData.SelectedGenres.Add(item.Text);
-                }
-            }*/
+            */
 
             /*// Создаем и показываем форму с результатами
             var resultsForm = new ResultsForm(filterData);
