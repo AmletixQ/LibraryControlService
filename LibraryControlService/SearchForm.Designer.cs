@@ -35,7 +35,7 @@
             label5 = new Label();
             SearchButton = new Button();
             AuthorTextBox = new TextBox();
-            NamуTextBox = new TextBox();
+            NameTextBox = new TextBox();
             YearTextBox = new TextBox();
             listViewGenres = new ListView();
             SuspendLayout();
@@ -104,12 +104,12 @@
             AuthorTextBox.Size = new Size(122, 23);
             AuthorTextBox.TabIndex = 6;
             // 
-            // NamуTextBox
+            // NameTextBox
             // 
-            NamуTextBox.Location = new Point(135, 135);
-            NamуTextBox.Name = "NamуTextBox";
-            NamуTextBox.Size = new Size(121, 23);
-            NamуTextBox.TabIndex = 7;
+            NameTextBox.Location = new Point(135, 135);
+            NameTextBox.Name = "NameTextBox";
+            NameTextBox.Size = new Size(121, 23);
+            NameTextBox.TabIndex = 7;
             // 
             // YearTextBox
             // 
@@ -134,7 +134,7 @@
             ClientSize = new Size(317, 450);
             Controls.Add(listViewGenres);
             Controls.Add(YearTextBox);
-            Controls.Add(NamуTextBox);
+            Controls.Add(NameTextBox);
             Controls.Add(AuthorTextBox);
             Controls.Add(SearchButton);
             Controls.Add(label5);
@@ -157,7 +157,7 @@
         private Label label5;
         private Button SearchButton;
         private TextBox AuthorTextBox;
-        private TextBox NamуTextBox;
+        private TextBox NameTextBox;
         private TextBox YearTextBox;
         private ListView listViewGenres;
     }
