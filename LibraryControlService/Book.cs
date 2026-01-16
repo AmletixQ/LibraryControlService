@@ -22,30 +22,45 @@ namespace LibraryControlService
         public Guid Id { get; set; }
         public string Title { get; set; }
         public string Author { get; set; }
-        public int PublishYear { get; set; }
         public string ISBN { get; set; }
+        public string ImagePath { get; set; }
+        public string Description { get; set; }
         public Genre Genre { get; set; }
+        public int PublishYear { get; set; }
         public int Pages { get; set; }
-        public bool IsAvailable { get; set; }
+        public int Count { get; set; }
+        public decimal Price { get; set; }
+
+        public Book() {}
 
         public Book(
             string title,
             string author,
-            int publishYear,
+            string imagePath,
             string ISBN,
+            string description,
             Genre genre,
+            int publishYear,
             int pages,
-            bool isAvailable
+            int count,
+            decimal price
+
         )
         {
             this.Id = Guid.NewGuid();
+
             this.Title = title;
             this.Author = author;
-            this.PublishYear = publishYear;
             this.ISBN = ISBN;
+            this.ImagePath = imagePath;
+            this.Description = description;
+
             this.Genre = genre;
+
+            this.PublishYear = publishYear;
             this.Pages = pages;
-            this.IsAvailable = isAvailable;
+            this.Count = count;
+            this.Price = price;
         }
 
         public List<string> ToList()
@@ -58,7 +73,7 @@ namespace LibraryControlService
                 ISBN,
                 Genre.ToString(),
                 Pages.ToString(),
-                IsAvailable.ToString()
+                Count.ToString()
             ];
         }
 
@@ -70,7 +85,7 @@ namespace LibraryControlService
                 $"ISBN: {ISBN}",
                 $"Genre: {Genre}",
                 $"Pages: {Pages}",
-                $"Available: {IsAvailable}"
+                $"Available: {Count}"
             ];
 
             return string.Join("\n", lines);
