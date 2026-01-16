@@ -68,7 +68,7 @@
             // BookDescriptionLabel
             // 
             BookDescriptionLabel.AutoSize = true;
-            BookDescriptionLabel.Location = new Point(12, 185);
+            BookDescriptionLabel.Location = new Point(12, 260);
             BookDescriptionLabel.Name = "BookDescriptionLabel";
             BookDescriptionLabel.Size = new Size(38, 15);
             BookDescriptionLabel.TabIndex = 3;

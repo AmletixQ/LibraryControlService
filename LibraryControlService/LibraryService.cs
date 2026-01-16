@@ -53,11 +53,11 @@ namespace LibraryControlService
                     if (line != "")
                     {
                         string[] splited = line.Split(" | ");
-                        Book parsedBook = new Book()
+                        Book parsedBook = new()
                         {
                             Title = splited[0],
                             Author = splited[1],
-                            Genre = splited[2],
+                            Genre = (Genre)Enum.Parse(typeof(Genre), splited[2]),
                             PublishYear = Convert.ToInt32(splited[3]),
                             ISBN = splited[4],
                             Pages = Convert.ToInt32(splited[5]),
@@ -66,6 +66,8 @@ namespace LibraryControlService
                             Price = 1000,
                             Count = 100
                         };
+
+                        books.Add(parsedBook);
                     }
                 }
             }
