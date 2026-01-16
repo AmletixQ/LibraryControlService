@@ -45,7 +45,7 @@
             // 
             // basket
             // 
-            basket.Location = new Point(642, 12);
+            basket.Location = new Point(698, 12);
             basket.Name = "basket";
             basket.Size = new Size(146, 23);
             basket.TabIndex = 1;
@@ -54,33 +54,34 @@
             // 
             // SearchButton
             // 
-            SearchButton.Location = new Point(561, 12);
+            SearchButton.Location = new Point(617, 12);
             SearchButton.Name = "SearchButton";
             SearchButton.Size = new Size(75, 23);
             SearchButton.TabIndex = 2;
             SearchButton.Text = "поиск";
             SearchButton.UseVisualStyleBackColor = true;
+            SearchButton.Click += SearchButton_Click;
             // 
             // BooksPanel
             // 
+            BooksPanel.AutoScroll = true;
             BooksPanel.Dock = DockStyle.Bottom;
-            BooksPanel.Location = new Point(0, 104);
+            BooksPanel.Location = new Point(0, 81);
             BooksPanel.Name = "BooksPanel";
-            BooksPanel.Size = new Size(800, 346);
+            BooksPanel.Size = new Size(866, 465);
             BooksPanel.TabIndex = 3;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(866, 546);
             Controls.Add(BooksPanel);
             Controls.Add(SearchButton);
             Controls.Add(basket);
             Controls.Add(SignButton);
             Name = "MainForm";
             Text = "Главная";
-            Load += MainForm_Load;
             ResumeLayout(false);
         }
 

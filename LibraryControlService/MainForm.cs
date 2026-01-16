@@ -4,93 +4,96 @@ namespace LibraryControlService
 {
     public partial class MainForm : Form
     {
+        LibraryService globalLibrary;
+        LibraryService basketLibrary;
+
         public MainForm()
         {
             InitializeComponent();
-            // Настройка FlowLayoutPanel
-            BooksPanel.WrapContents = true;
-            BooksPanel.AutoScroll = true;
+            globalLibrary = new LibraryService();
+            basketLibrary = new LibraryService();
 
-            // Добавим несколько карточек книг
-            AddBookCard("Книга 1", "Автор 1", "path_to_image1.jpg", "Цена1");
-            AddBookCard("Книга 2", "Автор 2", "path_to_image2.jpg", "Цена2");
-            AddBookCard("Книга 3", "Автор 3", "path_to_image3.jpg", "Цена3");
-            AddBookCard("Книга 4", "Автор 4", "равыоап", "Цена4");
+            globalLibrary.Initialize();
+
+            ShowBooks(globalLibrary.GetBooks());
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
+        private void AddBookCard(Book book)
         {
+            Panel card = new Panel()
+            {
+                Width = 200,
+                Height = 260,
+                BorderStyle = BorderStyle.FixedSingle,
+                Margin = new Padding(5)
+            };
 
-        }
-        private void AddBookCard(string title, string author, string imagePath, string price)
-        {
-            // Создаем панель для карточки
-            Panel card = new Panel();
-            card.Width = 200;
-            card.Height = 270;
-            card.BorderStyle = BorderStyle.FixedSingle;
-            card.Margin = new Padding(10);
-
-            // Создаем PictureBox для изображения
-            PictureBox pictureBox = new PictureBox();
-            pictureBox.Size = new Size(180, 120);
-            pictureBox.Location = new Point(10, 10);
-            pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+            PictureBox pictureBox = new PictureBox()
+            {
+                Size = new Size(180, 120),
+                Location = new Point(10, 10),
+                SizeMode = PictureBoxSizeMode.Zoom
+            };
             try
             {
-                pictureBox.Image = Image.FromFile(imagePath);
+                pictureBox.Image = Image.FromFile(book.ImagePath);
             }
             catch
             {
-                // На случай отсутствия изображения или ошибки
                 pictureBox.BackColor = Color.Gray;
             }
 
-            // Создаем Label для названия
-            Label lblTitle = new Label();
-            lblTitle.Text = title;
-            lblTitle.Location = new Point(10, 135);
-            lblTitle.Width = 180;
-            lblTitle.Font = new Font("Arial", 10, FontStyle.Bold);
-            lblTitle.AutoSize = false;
+            Label lblTitle = new Label()
+            {
+                Text = book.Title,
+                Location = new Point(10, 135),
+                Width = 180,
+                Font = new Font("Arial", 10, FontStyle.Bold),
+                AutoSize = false
+            };
 
-            // Создаем Label для автора
-            Label lblAuthor = new Label();
-            lblAuthor.Text = "Автор: " + author;
-            lblAuthor.Location = new Point(10, 160);
-            lblAuthor.Width = 180;
-            lblAuthor.Font = new Font("Arial", 9);
-            lblAuthor.AutoSize = false;
+            Label lblAuthor = new Label()
+            {
+                Text = "Автор: " + book.Author,
+                Location = new Point(10, 160),
+                Width = 180,
+                Font = new Font("Arial", 9),
+                AutoSize = false
+            };
 
-            Label lblPrice = new Label();
-            lblPrice.Text = price;
-            lblPrice.Location = new Point(10, 195);
-            lblPrice.Width = 180;
-            lblPrice.Font = new Font("Arial", 10, FontStyle.Bold);
-            lblPrice.ForeColor = Color.Red;
-            lblPrice.AutoSize = false;
+            Label lblPrice = new Label()
+            {
+                Text = book.Price.ToString(),
+                Location = new Point(10, 195),
+                Width = 180,
+                Font = new Font("Arial", 10, FontStyle.Bold),
+                ForeColor = Color.Red,
+                AutoSize = false
+            };
 
-            // Создаем кнопку "Купить"
-            Button btnBuy = new Button();
-            btnBuy.Text = "Купить";
-            btnBuy.Size = new Size(85, 30);
-            btnBuy.Location = new Point(10, 220);
+
+            Button btnBuy = new Button()
+            {
+                Text = "Купить",
+                Size = new Size(85, 30),
+                Location = new Point(10, 220),
+            };
             btnBuy.Click += (sender, e) =>
             {
-                MessageBox.Show($"Вы купили книгу: {title}");
+                MessageBox.Show($"Вы купили книгу: {book.Title}");
             };
 
-            // Создаем кнопку "В корзину"
-            Button btnCart = new Button();
-            btnCart.Text = "В корзину";
-            btnCart.Size = new Size(85, 30);
-            btnCart.Location = new Point(105, 220);
+            Button btnCart = new Button()
+            {
+                Text = "В корзину",
+                Size = new Size(85, 30),
+                Location = new Point(105, 220)
+            };
             btnCart.Click += (sender, e) =>
             {
-                MessageBox.Show($"Добавлено в корзину: {title}");
+                MessageBox.Show($"Добавлено в корзину: {book.Title}");
             };
 
-            // Добавляем все элементы на панель
             card.Controls.Add(pictureBox);
             card.Controls.Add(lblTitle);
             card.Controls.Add(lblAuthor);
@@ -98,8 +101,21 @@ namespace LibraryControlService
             card.Controls.Add(btnBuy);
             card.Controls.Add(btnCart);
 
-            // Добавляем карточку в FlowLayoutPanel
             BooksPanel.Controls.Add(card);
+        }
+
+        private void ShowBooks(List<Book> books)
+        {
+            foreach (var book in books)
+            {
+                AddBookCard(book);
+            }
+        }
+
+        private void SearchButton_Click(object sender, EventArgs e)
+        {
+            SearchForm searchForm = new SearchForm();
+            searchForm.ShowDialog();
         }
     }
 }
