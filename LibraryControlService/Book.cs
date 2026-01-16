@@ -24,23 +24,26 @@ namespace LibraryControlService
         public string Author { get; set; }
         public string ISBN { get; set; }
         public string ImagePath { get; set; }
+        public string Description { get; set; }
         public Genre Genre { get; set; }
         public int PublishYear { get; set; }
         public int Pages { get; set; }
         public int Count { get; set; }
         public decimal Price { get; set; }
 
+        public Book() {}
+
         public Book(
             string title,
             string author,
             string imagePath,
             string ISBN,
+            string description,
             Genre genre,
             int publishYear,
             int pages,
             int count,
-            int price
-
+            decimal price
         )
         {
             this.Id = Guid.NewGuid();
@@ -49,6 +52,7 @@ namespace LibraryControlService
             this.Author = author;
             this.ISBN = ISBN;
             this.ImagePath = imagePath;
+            this.Description = description;
 
             this.Genre = genre;
 

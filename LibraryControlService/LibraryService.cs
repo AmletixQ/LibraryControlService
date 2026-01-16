@@ -33,8 +33,6 @@ namespace LibraryControlService
             return null;
         }
 
-
-        // Переработать!
         public static void UpdateBook(Book updatedBook)
         {
             for (int i = 0; i < books.Count; ++i)
@@ -44,17 +42,33 @@ namespace LibraryControlService
 
         private static void LoadFromFile()
         {
-            const string filepath = "files/mock.json";
+            const string filepath = "assets/books.txt";
 
-            if (File.Exists(filepath))
+            using (StreamReader sr = new StreamReader(filepath))
             {
-                var json = File.ReadAllText(filepath);
-                var loadedBooks = JsonSerializer.Deserialize<List<Book>>(json);
-
-                if (loadedBooks != null)
+                string line;
+                while (!sr.EndOfStream)
                 {
-                    books.Clear();
-                    books.AddRange(loadedBooks);
+                    line = sr.ReadLine() ?? "";
+                    if (line != "")
+                    {
+                        string[] splited = line.Split(" | ");
+                        Book parsedBook = new()
+                        {
+                            Title = splited[0],
+                            Author = splited[1],
+                            Genre = (Genre)Enum.Parse(typeof(Genre), splited[2]),
+                            PublishYear = Convert.ToInt32(splited[3]),
+                            ISBN = splited[4],
+                            Pages = Convert.ToInt32(splited[5]),
+                            ImagePath = splited[6],
+                            Description = splited[7],
+                            Price = 1000,
+                            Count = 100
+                        };
+
+                        books.Add(parsedBook);
+                    }
                 }
             }
         }
