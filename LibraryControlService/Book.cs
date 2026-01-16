@@ -44,7 +44,6 @@ namespace LibraryControlService
             int pages,
             int count,
             decimal price
-
         )
         {
             this.Id = Guid.NewGuid();
