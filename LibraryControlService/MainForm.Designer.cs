@@ -28,18 +28,67 @@
         /// </summary>
         private void InitializeComponent()
         {
+            SignButton = new Button();
+            basket = new Button();
+            SearchButton = new Button();
+            BooksPanel = new FlowLayoutPanel();
             SuspendLayout();
+            // 
+            // SignButton
+            // 
+            SignButton.Location = new Point(12, 12);
+            SignButton.Name = "SignButton";
+            SignButton.Size = new Size(75, 23);
+            SignButton.TabIndex = 0;
+            SignButton.Text = "Войти";
+            SignButton.UseVisualStyleBackColor = true;
+            // 
+            // basket
+            // 
+            basket.Location = new Point(642, 12);
+            basket.Name = "basket";
+            basket.Size = new Size(146, 23);
+            basket.TabIndex = 1;
+            basket.Text = "перейти в корзину";
+            basket.UseVisualStyleBackColor = true;
+            // 
+            // SearchButton
+            // 
+            SearchButton.Location = new Point(561, 12);
+            SearchButton.Name = "SearchButton";
+            SearchButton.Size = new Size(75, 23);
+            SearchButton.TabIndex = 2;
+            SearchButton.Text = "поиск";
+            SearchButton.UseVisualStyleBackColor = true;
+            // 
+            // BooksPanel
+            // 
+            BooksPanel.Dock = DockStyle.Bottom;
+            BooksPanel.Location = new Point(0, 104);
+            BooksPanel.Name = "BooksPanel";
+            BooksPanel.Size = new Size(800, 346);
+            BooksPanel.TabIndex = 3;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(BooksPanel);
+            Controls.Add(SearchButton);
+            Controls.Add(basket);
+            Controls.Add(SignButton);
             Name = "MainForm";
-            Text = "Library Control Service";
+            Text = "Главная";
+            Load += MainForm_Load;
             ResumeLayout(false);
         }
 
         #endregion
+
+        private Button SignButton;
+        private Button basket;
+        private Button SearchButton;
+        private FlowLayoutPanel BooksPanel;
     }
 }
