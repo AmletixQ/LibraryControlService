@@ -81,6 +81,7 @@
             ClearFilterButton.Text = "Очистить фильтры";
             ClearFilterButton.UseVisualStyleBackColor = true;
             ClearFilterButton.Visible = false;
+            ClearFilterButton.Click += ClearFilterButton_Click;
             // 
             // MainForm
             // 
@@ -94,6 +95,7 @@
             Controls.Add(SignButton);
             Name = "MainForm";
             Text = "Главная";
+            Load += MainForm_Load;
             ResumeLayout(false);
         }
 
