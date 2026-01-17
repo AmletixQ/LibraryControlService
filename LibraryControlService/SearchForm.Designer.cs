@@ -37,7 +37,7 @@
             AuthorTextBox = new TextBox();
             NameTextBox = new TextBox();
             YearTextBox = new TextBox();
-            listViewGenres = new ListView();
+            cmbGenre = new ComboBox();
             SuspendLayout();
             // 
             // label1
@@ -58,7 +58,6 @@
             label2.Size = new Size(46, 15);
             label2.TabIndex = 1;
             label2.Text = "Автор :";
-            label2.Click += label2_Click;
             // 
             // label3
             // 
@@ -118,21 +117,20 @@
             YearTextBox.Size = new Size(122, 23);
             YearTextBox.TabIndex = 9;
             // 
-            // listViewGenres
+            // cmbGenre
             // 
-            listViewGenres.Location = new Point(134, 184);
-            listViewGenres.Name = "listViewGenres";
-            listViewGenres.Size = new Size(121, 97);
-            listViewGenres.TabIndex = 10;
-            listViewGenres.UseCompatibleStateImageBehavior = false;
-            listViewGenres.SelectedIndexChanged += listViewGenres_SelectedIndexChanged;
+            cmbGenre.FormattingEnabled = true;
+            cmbGenre.Location = new Point(132, 183);
+            cmbGenre.Name = "cmbGenre";
+            cmbGenre.Size = new Size(121, 23);
+            cmbGenre.TabIndex = 10;
             // 
             // SearchForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(317, 450);
-            Controls.Add(listViewGenres);
+            Controls.Add(cmbGenre);
             Controls.Add(YearTextBox);
             Controls.Add(NameTextBox);
             Controls.Add(AuthorTextBox);
@@ -144,6 +142,7 @@
             Controls.Add(label1);
             Name = "SearchForm";
             Text = "SearchForm";
+            Load += SearchForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -159,6 +158,6 @@
         private TextBox AuthorTextBox;
         private TextBox NameTextBox;
         private TextBox YearTextBox;
-        private ListView listViewGenres;
+        private ComboBox cmbGenre;
     }
 }
