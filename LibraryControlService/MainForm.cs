@@ -13,7 +13,7 @@ namespace LibraryControlService
             globalLibrary = new LibraryService();
             basketLibrary = new LibraryService();
 
-            globalLibrary.Initialize();
+            globalLibrary.LoadFromFile();
 
             ShowBooks(globalLibrary.GetBooks());
         }
@@ -23,7 +23,7 @@ namespace LibraryControlService
             Panel card = new Panel()
             {
                 Width = 200,
-                Height = 260,
+                Height = 280,
                 BorderStyle = BorderStyle.FixedSingle,
                 Margin = new Padding(5)
             };
@@ -45,9 +45,10 @@ namespace LibraryControlService
 
             Label lblTitle = new Label()
             {
+                Width = 180,
+                Height = 35,
                 Text = book.Title,
                 Location = new Point(10, 135),
-                Width = 180,
                 Font = new Font("Arial", 10, FontStyle.Bold),
                 AutoSize = false
             };
@@ -55,8 +56,9 @@ namespace LibraryControlService
             Label lblAuthor = new Label()
             {
                 Text = "Автор: " + book.Author,
-                Location = new Point(10, 160),
+                Location = new Point(10, 190),
                 Width = 180,
+                Height = 20,
                 Font = new Font("Arial", 9),
                 AutoSize = false
             };
@@ -64,9 +66,10 @@ namespace LibraryControlService
             Label lblPrice = new Label()
             {
                 Text = book.Price.ToString(),
-                Location = new Point(10, 195),
+                Location = new Point(10, 215),
                 Width = 180,
-                Font = new Font("Arial", 10, FontStyle.Bold),
+                //Height = 20,
+                Font = new Font("Arial", 12, FontStyle.Bold),
                 ForeColor = Color.Red,
                 AutoSize = false
             };
@@ -74,32 +77,24 @@ namespace LibraryControlService
 
             Button btnBuy = new Button()
             {
-                Text = "Купить",
-                Size = new Size(85, 30),
-                Location = new Point(10, 220),
+                Text = "Подробнее",
+                Size = new Size(180, 30),
+                Location = new Point(10, 240),
             };
             btnBuy.Click += (sender, e) =>
             {
-                MessageBox.Show($"Вы купили книгу: {book.Title}");
-            };
-
-            Button btnCart = new Button()
-            {
-                Text = "В корзину",
-                Size = new Size(85, 30),
-                Location = new Point(105, 220)
-            };
-            btnCart.Click += (sender, e) =>
-            {
-                MessageBox.Show($"Добавлено в корзину: {book.Title}");
+                BookInfoForm bookInfoForm = new(book, () =>
+                {
+                    basketLibrary.AddBook(book);
+                });
+                bookInfoForm.ShowDialog();
             };
 
             card.Controls.Add(pictureBox);
             card.Controls.Add(lblTitle);
-            card.Controls.Add(lblAuthor);
             card.Controls.Add(lblPrice);
+            card.Controls.Add(lblAuthor);
             card.Controls.Add(btnBuy);
-            card.Controls.Add(btnCart);
 
             BooksPanel.Controls.Add(card);
         }

@@ -32,6 +32,7 @@
             basket = new Button();
             SearchButton = new Button();
             BooksPanel = new FlowLayoutPanel();
+            ClearFilterButton = new Button();
             SuspendLayout();
             // 
             // SignButton
@@ -45,20 +46,20 @@
             // 
             // basket
             // 
-            basket.Location = new Point(698, 12);
+            basket.Location = new Point(768, 12);
             basket.Name = "basket";
-            basket.Size = new Size(146, 23);
+            basket.Size = new Size(86, 23);
             basket.TabIndex = 1;
-            basket.Text = "перейти в корзину";
+            basket.Text = "Корзина";
             basket.UseVisualStyleBackColor = true;
             // 
             // SearchButton
             // 
-            SearchButton.Location = new Point(617, 12);
+            SearchButton.Location = new Point(687, 12);
             SearchButton.Name = "SearchButton";
             SearchButton.Size = new Size(75, 23);
             SearchButton.TabIndex = 2;
-            SearchButton.Text = "поиск";
+            SearchButton.Text = "Поиск";
             SearchButton.UseVisualStyleBackColor = true;
             SearchButton.Click += SearchButton_Click;
             // 
@@ -71,11 +72,22 @@
             BooksPanel.Size = new Size(866, 465);
             BooksPanel.TabIndex = 3;
             // 
+            // ClearFilterButton
+            // 
+            ClearFilterButton.Location = new Point(554, 12);
+            ClearFilterButton.Name = "ClearFilterButton";
+            ClearFilterButton.Size = new Size(127, 23);
+            ClearFilterButton.TabIndex = 4;
+            ClearFilterButton.Text = "Очистить фильтры";
+            ClearFilterButton.UseVisualStyleBackColor = true;
+            ClearFilterButton.Visible = false;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(866, 546);
+            Controls.Add(ClearFilterButton);
             Controls.Add(BooksPanel);
             Controls.Add(SearchButton);
             Controls.Add(basket);
@@ -91,5 +103,6 @@
         private Button basket;
         private Button SearchButton;
         private FlowLayoutPanel BooksPanel;
+        private Button ClearFilterButton;
     }
 }

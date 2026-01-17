@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Text.Json;
 
 namespace LibraryControlService
 {
@@ -13,9 +12,14 @@ namespace LibraryControlService
             return new List<Book>(books);
         }
 
-        public void Initialize() => LoadFromFile();
         public void Clear() => books.Clear();
-        public void AddBook(Book book) => books.Add(book);
+        public void AddBook(Book book)
+        {
+            if (books.Find((b) => b.Id == book.Id) != null)
+                return;
+
+            books.Add(book);
+        }
 
         public void RemoveBook(Guid bookId)
         {
@@ -26,11 +30,7 @@ namespace LibraryControlService
 
         public Book? GetBookById(Guid bookId)
         {
-            foreach (var book in books)
-                if (book.Id == bookId)
-                    return book;
-
-            return null;
+            return books.Find(b => b.Id == bookId);
         }
 
         public void UpdateBook(Book updatedBook)
@@ -40,9 +40,33 @@ namespace LibraryControlService
                     books[i] = updatedBook;
         }
 
-        private void LoadFromFile()
+        public void SaveToFile(string filename = "books.txt")
         {
-            const string filepath = "assets/books.txt";
+            string filepath = $"assets/{filename}";
+
+            using (StreamWriter sw = new StreamWriter(filepath, false))
+            {
+                foreach (Book book in books)
+                {
+                    string[] parts = [
+                        book.Title,
+                        book.Author,
+                        book.Genre.ToString(),
+                        book.PublishYear.ToString(),
+                        book.ISBN,
+                        book.Pages.ToString(),
+                        book.ImagePath,
+                        book.Description
+                    ];
+
+                    sw.WriteLine(string.Join(" | ", parts));
+                }
+            }
+        }
+
+        public void LoadFromFile(string filename = "books.txt")
+        {
+            string filepath = $"assets/{filename}";
 
             using (StreamReader sr = new StreamReader(filepath))
             {
@@ -72,5 +96,6 @@ namespace LibraryControlService
                 }
             }
         }
+
     }
 }
