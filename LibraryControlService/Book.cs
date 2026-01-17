@@ -6,6 +6,7 @@ namespace LibraryControlService
     public enum Genre
     {
         Fiction,
+        NonFiction,
         Science,
         History,
         Biography,
