@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace LibraryControlService
 {
@@ -14,8 +15,8 @@ namespace LibraryControlService
     {
         public string SelectAuthor { get; set; }
         public string SelectTitle { get; set; }
-        public string SelectGenre { get; set; }
-        public string SelectYear { get; set; }
+        public Genre? SelectGenre { get; set; }
+        public int SelectYear { get; set; }
         public SearchForm()
         {
             InitializeComponent();
@@ -30,22 +31,28 @@ namespace LibraryControlService
         {
             SelectAuthor = AuthorTextBox.Text;
             SelectTitle = NameTextBox.Text;
-            SelectYear = YearTextBox.Text;
-            SelectGenre = cmbGenre.SelectedItem?.ToString() ?? "";
+            if(int.TryParse(YearTextBox.Text, out int result))
+                SelectYear = result;
+            if(cmbGenre.SelectedIndex > 0)
+                SelectGenre = (Genre)Enum.Parse(typeof(Genre), cmbGenre.SelectedItem?.ToString()!); ;
             this.Close();
         }
 
         private void SearchForm_Load(object sender, EventArgs e)
         {
-            cmbGenre.Items.AddRange(new object[] {
+            cmbGenre.Items.AddRange(new string[] {
                 "",
-                "Роман",
-                "Фантастика",
-                "Детектив",
-                "Фэнтези",
-                "Научная литература",
-                "Биография",
-                "Поэзия"
+                "Fiction",
+                "NonFiction",
+                "Science",
+                "History",
+                "Biography",
+                "Fantasy",
+                "Mystery",
+                "Romance",
+                "Thriller",
+                "Horror",
+                "Detective"
             });
             cmbGenre.SelectedIndex = 0;
         }

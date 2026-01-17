@@ -101,6 +101,7 @@ namespace LibraryControlService
 
         private void ShowBooks(List<Book> books)
         {
+            BooksPanel.Controls.Clear();
             foreach (var book in books)
             {
                 AddBookCard(book);
@@ -111,6 +112,42 @@ namespace LibraryControlService
         {
             SearchForm searchForm = new SearchForm();
             searchForm.ShowDialog();
+
+            if (string.IsNullOrEmpty(searchForm.SelectTitle) &&
+                string.IsNullOrEmpty(searchForm.SelectAuthor) &&
+                searchForm.SelectGenre == null &&
+                searchForm.SelectYear == 0)
+                return;
+            ClearFilterButton.Visible = true;
+
+            var filteredBooks = globalLibrary.GetBooks();
+            if (!string.IsNullOrEmpty(searchForm.SelectTitle))
+            {
+                filteredBooks = filteredBooks.Where((book) => book.Title.Contains(searchForm.SelectTitle)).ToList();
+            }
+            if (!string.IsNullOrEmpty(searchForm.SelectAuthor))
+            {
+                filteredBooks = filteredBooks.Where((book) => book.Author.Contains(searchForm.SelectAuthor)).ToList();
+            }
+            if (searchForm.SelectYear != 0)
+            {
+                filteredBooks = filteredBooks.Where((book) => book.PublishYear == searchForm.SelectYear).ToList();
+            }
+            if (searchForm.SelectGenre != null)
+            { filteredBooks = filteredBooks.Where((book) => book.Genre == searchForm.SelectGenre).ToList(); }
+
+            ShowBooks(filteredBooks);
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ClearFilterButton_Click(object sender, EventArgs e)
+        {
+            ClearFilterButton.Visible = false;
+            ShowBooks(globalLibrary.GetBooks());
         }
     }
 }

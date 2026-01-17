@@ -44,7 +44,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Arial Narrow", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            label1.Location = new Point(61, 40);
+            label1.Location = new Point(72, 39);
             label1.Name = "label1";
             label1.Size = new Size(113, 23);
             label1.TabIndex = 0;
@@ -62,7 +62,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(30, 139);
+            label3.Location = new Point(30, 142);
             label3.Name = "label3";
             label3.Size = new Size(65, 15);
             label3.TabIndex = 2;
@@ -71,7 +71,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(30, 182);
+            label4.Location = new Point(30, 185);
             label4.Name = "label4";
             label4.Size = new Size(44, 15);
             label4.TabIndex = 3;
@@ -80,7 +80,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(30, 334);
+            label5.Location = new Point(30, 227);
             label5.Name = "label5";
             label5.Size = new Size(81, 15);
             label5.TabIndex = 4;
@@ -88,7 +88,7 @@
             // 
             // SearchButton
             // 
-            SearchButton.Location = new Point(76, 384);
+            SearchButton.Location = new Point(91, 287);
             SearchButton.Name = "SearchButton";
             SearchButton.Size = new Size(75, 23);
             SearchButton.TabIndex = 5;
@@ -98,21 +98,21 @@
             // 
             // AuthorTextBox
             // 
-            AuthorTextBox.Location = new Point(134, 95);
+            AuthorTextBox.Location = new Point(131, 95);
             AuthorTextBox.Name = "AuthorTextBox";
             AuthorTextBox.Size = new Size(122, 23);
             AuthorTextBox.TabIndex = 6;
             // 
             // NameTextBox
             // 
-            NameTextBox.Location = new Point(135, 135);
+            NameTextBox.Location = new Point(131, 139);
             NameTextBox.Name = "NameTextBox";
-            NameTextBox.Size = new Size(121, 23);
+            NameTextBox.Size = new Size(122, 23);
             NameTextBox.TabIndex = 7;
             // 
             // YearTextBox
             // 
-            YearTextBox.Location = new Point(134, 333);
+            YearTextBox.Location = new Point(131, 224);
             YearTextBox.Name = "YearTextBox";
             YearTextBox.Size = new Size(122, 23);
             YearTextBox.TabIndex = 9;
@@ -120,7 +120,7 @@
             // cmbGenre
             // 
             cmbGenre.FormattingEnabled = true;
-            cmbGenre.Location = new Point(132, 183);
+            cmbGenre.Location = new Point(132, 182);
             cmbGenre.Name = "cmbGenre";
             cmbGenre.Size = new Size(121, 23);
             cmbGenre.TabIndex = 10;
@@ -129,7 +129,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(317, 450);
+            ClientSize = new Size(276, 334);
             Controls.Add(cmbGenre);
             Controls.Add(YearTextBox);
             Controls.Add(NameTextBox);
