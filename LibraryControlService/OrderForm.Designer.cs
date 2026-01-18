@@ -141,7 +141,7 @@
             // 
             // ConfirmBuyButton
             // 
-            ConfirmBuyButton.BackColor = Color.Lime;
+            ConfirmBuyButton.BackColor = Color.LightGreen;
             ConfirmBuyButton.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
             ConfirmBuyButton.Location = new Point(89, 274);
             ConfirmBuyButton.Name = "ConfirmBuyButton";

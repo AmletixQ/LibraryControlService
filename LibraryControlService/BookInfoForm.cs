@@ -16,7 +16,7 @@ namespace LibraryControlService
 
             BookNameLabel.Text = book.Title;
             BookAuthorLabel.Text = book.Author;
-            BookPriceLabel.Text = book.Price.ToString();
+            BookPriceLabel.Text = $"{book.Price.ToString()} ₽";
             BookDescriptionLabel.Text = book.Description;
 
             try
