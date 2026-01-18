@@ -65,7 +65,7 @@ namespace LibraryControlService
 
             Label lblPrice = new Label()
             {
-                Text = book.Price.ToString(),
+                Text = $"{book.Price.ToString()} ð.",
                 Location = new Point(10, 215),
                 Width = 180,
                 Font = new Font("Arial", 12, FontStyle.Bold),

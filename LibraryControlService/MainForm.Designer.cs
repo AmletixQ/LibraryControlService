@@ -32,13 +32,14 @@
             SearchButton = new Button();
             ClearFilterButton = new Button();
             BooksPanel = new FlowLayoutPanel();
+            label1 = new Label();
             SuspendLayout();
             // 
             // basket
             // 
-            basket.Location = new Point(768, 12);
+            basket.Location = new Point(785, 35);
             basket.Name = "basket";
-            basket.Size = new Size(86, 27);
+            basket.Size = new Size(69, 27);
             basket.TabIndex = 1;
             basket.Text = "Корзина";
             basket.UseVisualStyleBackColor = true;
@@ -46,7 +47,7 @@
             // 
             // SearchButton
             // 
-            SearchButton.Location = new Point(687, 12);
+            SearchButton.Location = new Point(704, 35);
             SearchButton.Name = "SearchButton";
             SearchButton.Size = new Size(75, 27);
             SearchButton.TabIndex = 2;
@@ -56,9 +57,9 @@
             // 
             // ClearFilterButton
             // 
-            ClearFilterButton.Location = new Point(554, 12);
+            ClearFilterButton.Location = new Point(574, 35);
             ClearFilterButton.Name = "ClearFilterButton";
-            ClearFilterButton.Size = new Size(127, 27);
+            ClearFilterButton.Size = new Size(124, 27);
             ClearFilterButton.TabIndex = 4;
             ClearFilterButton.Text = "Очистить фильтры";
             ClearFilterButton.UseVisualStyleBackColor = true;
@@ -74,11 +75,22 @@
             BooksPanel.Size = new Size(866, 465);
             BooksPanel.TabIndex = 3;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("SimSun", 48F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            label1.Location = new Point(297, 9);
+            label1.Name = "label1";
+            label1.Size = new Size(251, 64);
+            label1.TabIndex = 5;
+            label1.Text = "Library";
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(866, 546);
+            Controls.Add(label1);
             Controls.Add(ClearFilterButton);
             Controls.Add(BooksPanel);
             Controls.Add(SearchButton);
@@ -86,6 +98,7 @@
             Name = "MainForm";
             Text = "Главная";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -93,5 +106,6 @@
         private Button SearchButton;
         private Button ClearFilterButton;
         private FlowLayoutPanel BooksPanel;
+        private Label label1;
     }
 }

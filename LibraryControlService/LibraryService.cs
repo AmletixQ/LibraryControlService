@@ -23,10 +23,11 @@ namespace LibraryControlService
 
         public void RemoveBook(Guid bookId)
         {
-            foreach (var book in books)
-                if (book.Id == bookId)
-                    books.Remove(book);
+            int idx = books.FindIndex(b => b.Id == bookId);
+            if (idx != -1)
+                books.RemoveAt(idx);
         }
+
 
         public Book? GetBookById(Guid bookId)
         {

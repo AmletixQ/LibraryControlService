@@ -32,6 +32,7 @@
             BuyButton = new Button();
             label2 = new Label();
             BasketPanel = new FlowLayoutPanel();
+            PriceLabel = new Label();
             SuspendLayout();
             // 
             // label1
@@ -47,8 +48,8 @@
             // 
             // BuyButton
             // 
-            BuyButton.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            BuyButton.Location = new Point(85, 403);
+            BuyButton.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            BuyButton.Location = new Point(476, 408);
             BuyButton.Name = "BuyButton";
             BuyButton.Size = new Size(116, 26);
             BuyButton.TabIndex = 2;
@@ -58,31 +59,44 @@
             // label2
             // 
             label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
             label2.Location = new Point(18, 410);
             label2.Name = "label2";
-            label2.Size = new Size(41, 15);
+            label2.Size = new Size(65, 21);
             label2.TabIndex = 3;
-            label2.Text = "Цена: ";
+            label2.Text = "Итого: ";
             // 
             // BasketPanel
             // 
             BasketPanel.AutoScroll = true;
-            BasketPanel.Location = new Point(0, 81);
+            BasketPanel.Location = new Point(0, 72);
             BasketPanel.Name = "BasketPanel";
-            BasketPanel.Size = new Size(604, 300);
+            BasketPanel.Size = new Size(604, 318);
             BasketPanel.TabIndex = 5;
+            // 
+            // PriceLabel
+            // 
+            PriceLabel.AutoSize = true;
+            PriceLabel.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            PriceLabel.ForeColor = Color.DarkGreen;
+            PriceLabel.Location = new Point(83, 411);
+            PriceLabel.Name = "PriceLabel";
+            PriceLabel.Size = new Size(18, 20);
+            PriceLabel.TabIndex = 6;
+            PriceLabel.Text = "0";
             // 
             // ListBookForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(604, 450);
+            Controls.Add(PriceLabel);
             Controls.Add(BasketPanel);
             Controls.Add(label2);
             Controls.Add(BuyButton);
             Controls.Add(label1);
             Name = "ListBookForm";
-            Text = "ListBookForm";
+            Text = "Корзина покупок";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -93,5 +107,6 @@
         private Button BuyButton;
         private Label label2;
         private FlowLayoutPanel BasketPanel;
+        private Label PriceLabel;
     }
 }
