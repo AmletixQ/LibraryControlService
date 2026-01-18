@@ -122,11 +122,11 @@ namespace LibraryControlService
             var filteredBooks = globalLibrary.GetBooks();
             if (!string.IsNullOrEmpty(searchForm.SelectTitle))
             {
-                filteredBooks = filteredBooks.Where((book) => book.Title.Contains(searchForm.SelectTitle)).ToList();
+                filteredBooks = filteredBooks.Where((book) => book.Title.ToLower().Contains(searchForm.SelectTitle.ToLower())).ToList();
             }
             if (!string.IsNullOrEmpty(searchForm.SelectAuthor))
             {
-                filteredBooks = filteredBooks.Where((book) => book.Author.Contains(searchForm.SelectAuthor)).ToList();
+                filteredBooks = filteredBooks.Where((book) => book.Author.ToLower().Contains(searchForm.SelectAuthor.ToLower())).ToList();
             }
             if (searchForm.SelectYear != 0)
             {
@@ -142,6 +142,12 @@ namespace LibraryControlService
         {
             ClearFilterButton.Visible = false;
             ShowBooks(globalLibrary.GetBooks());
+        }
+
+        private void basket_Click(object sender, EventArgs e)
+        {
+            ListBookForm ListForm = new ListBookForm(basketLibrary);
+            ListForm.ShowDialog();
         }
     }
 }

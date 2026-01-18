@@ -28,40 +28,42 @@
         /// </summary>
         private void InitializeComponent()
         {
-            SignButton = new Button();
             basket = new Button();
             SearchButton = new Button();
-            BooksPanel = new FlowLayoutPanel();
             ClearFilterButton = new Button();
+            BooksPanel = new FlowLayoutPanel();
             SuspendLayout();
-            // 
-            // SignButton
-            // 
-            SignButton.Location = new Point(12, 12);
-            SignButton.Name = "SignButton";
-            SignButton.Size = new Size(75, 23);
-            SignButton.TabIndex = 0;
-            SignButton.Text = "Войти";
-            SignButton.UseVisualStyleBackColor = true;
             // 
             // basket
             // 
             basket.Location = new Point(768, 12);
             basket.Name = "basket";
-            basket.Size = new Size(86, 23);
+            basket.Size = new Size(86, 27);
             basket.TabIndex = 1;
             basket.Text = "Корзина";
             basket.UseVisualStyleBackColor = true;
+            basket.Click += basket_Click;
             // 
             // SearchButton
             // 
             SearchButton.Location = new Point(687, 12);
             SearchButton.Name = "SearchButton";
-            SearchButton.Size = new Size(75, 23);
+            SearchButton.Size = new Size(75, 27);
             SearchButton.TabIndex = 2;
             SearchButton.Text = "Поиск";
             SearchButton.UseVisualStyleBackColor = true;
             SearchButton.Click += SearchButton_Click;
+            // 
+            // ClearFilterButton
+            // 
+            ClearFilterButton.Location = new Point(554, 12);
+            ClearFilterButton.Name = "ClearFilterButton";
+            ClearFilterButton.Size = new Size(127, 27);
+            ClearFilterButton.TabIndex = 4;
+            ClearFilterButton.Text = "Очистить фильтры";
+            ClearFilterButton.UseVisualStyleBackColor = true;
+            ClearFilterButton.Visible = false;
+            ClearFilterButton.Click += ClearFilterButton_Click;
             // 
             // BooksPanel
             // 
@@ -72,17 +74,6 @@
             BooksPanel.Size = new Size(866, 465);
             BooksPanel.TabIndex = 3;
             // 
-            // ClearFilterButton
-            // 
-            ClearFilterButton.Location = new Point(554, 12);
-            ClearFilterButton.Name = "ClearFilterButton";
-            ClearFilterButton.Size = new Size(127, 23);
-            ClearFilterButton.TabIndex = 4;
-            ClearFilterButton.Text = "Очистить фильтры";
-            ClearFilterButton.UseVisualStyleBackColor = true;
-            ClearFilterButton.Visible = false;
-            ClearFilterButton.Click += ClearFilterButton_Click;
-            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -92,18 +83,15 @@
             Controls.Add(BooksPanel);
             Controls.Add(SearchButton);
             Controls.Add(basket);
-            Controls.Add(SignButton);
             Name = "MainForm";
             Text = "Главная";
             ResumeLayout(false);
         }
 
         #endregion
-
-        private Button SignButton;
         private Button basket;
         private Button SearchButton;
-        private FlowLayoutPanel BooksPanel;
         private Button ClearFilterButton;
+        private FlowLayoutPanel BooksPanel;
     }
 }
