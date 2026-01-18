@@ -32,7 +32,10 @@ namespace LibraryControlService
         public int Count { get; set; }
         public decimal Price { get; set; }
 
-        public Book() {}
+        public Book() 
+        {
+            this.Id= Guid.NewGuid();
+        }
 
         public Book(
             string title,
