@@ -32,7 +32,10 @@ namespace LibraryControlService
         public int Count { get; set; }
         public decimal Price { get; set; }
 
-        public Book() {}
+        public Book()
+        {
+            this.Id = Guid.NewGuid();
+        }
 
         public Book(
             string title,
@@ -45,10 +48,8 @@ namespace LibraryControlService
             int pages,
             int count,
             decimal price
-        )
+        ) : base()
         {
-            this.Id = Guid.NewGuid();
-
             this.Title = title;
             this.Author = author;
             this.ISBN = ISBN;

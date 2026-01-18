@@ -3,7 +3,7 @@ using System.IO;
 
 namespace LibraryControlService
 {
-    class LibraryService
+    public class LibraryService
     {
         private readonly List<Book> books = [];
 

@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 
 namespace LibraryControlService
@@ -14,7 +15,6 @@ namespace LibraryControlService
             basketLibrary = new LibraryService();
 
             globalLibrary.LoadFromFile();
-
             ShowBooks(globalLibrary.GetBooks());
         }
 
@@ -68,20 +68,19 @@ namespace LibraryControlService
                 Text = book.Price.ToString(),
                 Location = new Point(10, 215),
                 Width = 180,
-                //Height = 20,
                 Font = new Font("Arial", 12, FontStyle.Bold),
                 ForeColor = Color.Red,
                 AutoSize = false
             };
 
 
-            Button btnBuy = new Button()
+            Button btnAbout = new Button()
             {
                 Text = "Подробнее",
                 Size = new Size(180, 30),
                 Location = new Point(10, 240),
             };
-            btnBuy.Click += (sender, e) =>
+            btnAbout.Click += (sender, e) =>
             {
                 BookInfoForm bookInfoForm = new(book, () =>
                 {
@@ -94,7 +93,7 @@ namespace LibraryControlService
             card.Controls.Add(lblTitle);
             card.Controls.Add(lblPrice);
             card.Controls.Add(lblAuthor);
-            card.Controls.Add(btnBuy);
+            card.Controls.Add(btnAbout);
 
             BooksPanel.Controls.Add(card);
         }
@@ -137,11 +136,6 @@ namespace LibraryControlService
             { filteredBooks = filteredBooks.Where((book) => book.Genre == searchForm.SelectGenre).ToList(); }
 
             ShowBooks(filteredBooks);
-        }
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void ClearFilterButton_Click(object sender, EventArgs e)

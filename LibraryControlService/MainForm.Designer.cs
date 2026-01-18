@@ -95,7 +95,6 @@
             Controls.Add(SignButton);
             Name = "MainForm";
             Text = "Главная";
-            Load += MainForm_Load;
             ResumeLayout(false);
         }
 
