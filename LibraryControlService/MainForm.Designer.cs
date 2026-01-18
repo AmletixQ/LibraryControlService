@@ -85,7 +85,6 @@
             Controls.Add(basket);
             Name = "MainForm";
             Text = "Главная";
-            Load += MainForm_Load;
             ResumeLayout(false);
         }
 

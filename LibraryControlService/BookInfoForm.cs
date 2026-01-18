@@ -30,7 +30,8 @@ namespace LibraryControlService
 
         private void BuyButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Покупка добавлена на ожидание...");
+            OrderForm orderForm = new OrderForm();
+            orderForm.ShowDialog();
         }
 
         private void BasketButton_Click(object sender, EventArgs e)
