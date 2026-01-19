@@ -60,7 +60,6 @@
             BookAuthorLabel.Size = new Size(48, 20);
             BookAuthorLabel.TabIndex = 2;
             BookAuthorLabel.Text = "label1";
-            BookAuthorLabel.Click += BookAuthorLabel_Click;
             // 
             // BookDescriptionLabel
             // 

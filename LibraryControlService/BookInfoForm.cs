@@ -19,8 +19,6 @@ namespace LibraryControlService
             BookGenresLabel.Text = string.Join(", ", book.Genres);
             BookPriceLabel.Text = $"{book.Price.ToString()} ₽";
             BookDescriptionLabel.Text = book.Description;
-
-
         }
 
         private void BuyButton_Click(object sender, EventArgs e)
@@ -33,11 +31,6 @@ namespace LibraryControlService
         {
             this._action();
             MessageBox.Show("Книга добавлена корзину...");
-        }
-
-        private void BookAuthorLabel_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

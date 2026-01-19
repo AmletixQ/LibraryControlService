@@ -34,37 +34,6 @@ namespace LibraryControlService
             return books.Find(b => b.Id == bookId);
         }
 
-        public void UpdateBook(Book updatedBook)
-        {
-            for (int i = 0; i < books.Count; ++i)
-                if (books[i].Id == updatedBook.Id)
-                    books[i] = updatedBook;
-        }
-
-        public void SaveToFile(string filename = "books.txt")
-        {
-            string filepath = $"assets/{filename}";
-
-            using (StreamWriter sw = new StreamWriter(filepath, false))
-            {
-                foreach (Book book in books)
-                {
-                    string[] parts = [
-                        book.Title,
-                        book.Author,
-                        book.Genres.ToString()!,
-                        book.PublishYear.ToString(),
-                        book.ISBN,
-                        book.Pages.ToString(),
-                        book.ImagePath,
-                        book.Description
-                    ];
-
-                    sw.WriteLine(string.Join(" | ", parts));
-                }
-            }
-        }
-
         public void LoadFromFile(string filename = "books.txt")
         {
             string filepath = $"assets/{filename}";
