@@ -55,6 +55,7 @@ namespace LibraryControlService
             }
 
             MessageBox.Show("Спасибо за заказ! Ожидайте...");
+            DialogResult = DialogResult.OK;
             this.Close();
         }
 
@@ -68,7 +69,7 @@ namespace LibraryControlService
                 return;
 
             if (keyPressType == KeyPressType.DigitAndLetter && (
-                char.IsDigit(e.KeyChar) || char.IsAsciiLetter(e.KeyChar) ||
+                char.IsDigit(e.KeyChar) || char.IsLetter(e.KeyChar) ||
                 e.KeyChar == '.' || e.KeyChar == '@'
                 )
             )
@@ -77,7 +78,7 @@ namespace LibraryControlService
             if (keyPressType == KeyPressType.OnlyDigit && char.IsDigit(e.KeyChar))
                 return;
 
-            if (keyPressType == KeyPressType.OnlyLetter && char.IsAsciiLetter(e.KeyChar))
+            if (keyPressType == KeyPressType.OnlyLetter && char.IsLetter(e.KeyChar))
                 return;
 
             e.Handled = true;

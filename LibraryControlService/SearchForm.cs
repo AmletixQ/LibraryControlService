@@ -20,11 +20,6 @@ namespace LibraryControlService
         public SearchForm()
         {
             InitializeComponent();
-            InitializeGenres();
-        }
-        private void InitializeGenres()
-        {
-
         }
 
         private void SearchButton_Click(object sender, EventArgs e)
