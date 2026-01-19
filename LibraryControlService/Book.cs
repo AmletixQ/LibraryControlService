@@ -15,7 +15,8 @@ namespace LibraryControlService
         Romance,
         Thriller,
         Horror,
-        Detective
+        Detective,
+        Drama
     }
 
     public class Book
@@ -26,10 +27,9 @@ namespace LibraryControlService
         public string ISBN { get; set; }
         public string ImagePath { get; set; }
         public string Description { get; set; }
-        public Genre Genre { get; set; }
+        public List<Genre> Genres { get; set; }
         public int PublishYear { get; set; }
         public int Pages { get; set; }
-        public int Count { get; set; }
         public decimal Price { get; set; }
 
         public Book()
@@ -43,12 +43,11 @@ namespace LibraryControlService
             string imagePath,
             string ISBN,
             string description,
-            Genre genre,
+            List<Genre> genres,
             int publishYear,
             int pages,
-            int count,
             decimal price
-        ) : base()
+        ) : this()
         {
             this.Title = title;
             this.Author = author;
@@ -56,40 +55,31 @@ namespace LibraryControlService
             this.ImagePath = imagePath;
             this.Description = description;
 
-            this.Genre = genre;
+            this.Genres = new List<Genre>(genres);
 
             this.PublishYear = publishYear;
             this.Pages = pages;
-            this.Count = count;
             this.Price = price;
         }
 
         public List<string> ToList()
         {
             return [
-                Id.ToString(),
                 Title,
                 Author,
+                string.Join(" ", Genres),
                 PublishYear.ToString(),
                 ISBN,
-                Genre.ToString(),
                 Pages.ToString(),
-                Count.ToString()
+                ImagePath,
+                Description,
+                Price.ToString()
             ];
         }
 
         public override string ToString()
         {
-            string[] lines = [
-                $"${Title} by {Author}",
-                $"Published: {PublishYear}",
-                $"ISBN: {ISBN}",
-                $"Genre: {Genre}",
-                $"Pages: {Pages}",
-                $"Available: {Count}"
-            ];
-
-            return string.Join("\n", lines);
+            return string.Join("\n", this.ToList());
         }
     }
 }

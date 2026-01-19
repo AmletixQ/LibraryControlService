@@ -52,7 +52,7 @@ namespace LibraryControlService
                     string[] parts = [
                         book.Title,
                         book.Author,
-                        book.Genre.ToString(),
+                        book.Genres.ToString()!,
                         book.PublishYear.ToString(),
                         book.ISBN,
                         book.Pages.ToString(),
@@ -82,14 +82,13 @@ namespace LibraryControlService
                         {
                             Title = splited[0],
                             Author = splited[1],
-                            Genre = (Genre)Enum.Parse(typeof(Genre), splited[2]),
+                            Genres = splited[2].Split().Select(genre => (Genre)Enum.Parse(typeof(Genre), genre)).ToList(),
                             PublishYear = Convert.ToInt32(splited[3]),
                             ISBN = splited[4],
                             Pages = Convert.ToInt32(splited[5]),
                             ImagePath = splited[6],
                             Description = splited[7],
-                            Price = 1000,
-                            Count = 100
+                            Price = Convert.ToDecimal(splited[8]),
                         };
 
                         books.Add(parsedBook);
