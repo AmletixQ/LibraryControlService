@@ -86,7 +86,7 @@ namespace LibraryControlService
                             PublishYear = Convert.ToInt32(splited[3]),
                             ISBN = splited[4],
                             Pages = Convert.ToInt32(splited[5]),
-                            ImagePath = splited[6],
+                            ImagePath = $"assets/images/{splited[6]}",
                             Description = splited[7],
                             Price = Convert.ToDecimal(splited[8]),
                         };

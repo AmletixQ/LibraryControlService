@@ -31,7 +31,7 @@ namespace LibraryControlService
 
 			PictureBox pictureBox = new PictureBox()
 			{
-				Size = new Size(180, 120),
+				Size = new Size(180, 120),//180,120
 				Location = new Point(10, 10),
 				SizeMode = PictureBoxSizeMode.Zoom
 			};
@@ -47,10 +47,10 @@ namespace LibraryControlService
 			Label lblTitle = new Label()
 			{
 				Width = 180,
-				Height = 35,
+				Height = 40,
 				Text = book.Title,
-				Location = new Point(10, 135),
-				Font = new Font("Arial", 10, FontStyle.Bold),
+				Location = new Point(10, 150),
+				Font = new Font("Arial", 11, FontStyle.Bold),
 				AutoSize = false
 			};
 
